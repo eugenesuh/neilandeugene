@@ -1,0 +1,91 @@
+<h1>
+  Guest #<%= @guest.id %> details
+</h1>
+
+<a href="/guests/<%= @guest.id %>/edit">
+  Edit guest
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @guest.user_id %>
+  </dd>
+
+  <dt>
+    Age
+  </dt>
+  <dd>
+    <%= @guest.age %>
+  </dd>
+
+  <dt>
+    Status
+  </dt>
+  <dd>
+    <%= @guest.status %>
+  </dd>
+
+  <dt>
+    Food
+  </dt>
+  <dd>
+    <%= @guest.food %>
+  </dd>
+
+  <dt>
+    Lastname
+  </dt>
+  <dd>
+    <%= @guest.lastname %>
+  </dd>
+
+  <dt>
+    Firstname
+  </dt>
+  <dd>
+    <%= @guest.firstname %>
+  </dd>
+
+  <dt>
+    Dietary
+  </dt>
+  <dd>
+    <%= @guest.dietary %>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <%= @guest.image %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@guest.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@guest.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_guest/<%= @guest.id %>">
+  Delete guest
+</a>
+
+<hr>
+
+<a href="/guests">
+  Go back
+</a>

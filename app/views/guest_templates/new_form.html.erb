@@ -1,0 +1,100 @@
+<!-- Validation failure messages -->
+<% if @guest.present? %>
+  <% if @guest.errors.any? %>
+    <% @guest.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new guest
+</h1>
+
+<hr>
+
+<form action="/create_guest" method="post">
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @guest.try(:user_id) %>">
+  </div>
+
+  <!-- Label and input for age -->
+  <div class="form-group">
+    <label for="age">
+      Age
+    </label>
+
+    <input type="text" id="age" name="age" class="form-control" value="<%= @guest.try(:age) %>">
+  </div>
+
+  <!-- Label and input for status -->
+  <div class="form-group">
+    <label for="status">
+      Status
+    </label>
+
+    <input type="text" id="status" name="status" class="form-control" value="<%= @guest.try(:status) %>">
+  </div>
+
+  <!-- Label and input for food -->
+  <div class="form-group">
+    <label for="food">
+      Food
+    </label>
+
+    <input type="text" id="food" name="food" class="form-control" value="<%= @guest.try(:food) %>">
+  </div>
+
+  <!-- Label and input for lastname -->
+  <div class="form-group">
+    <label for="lastname">
+      Lastname
+    </label>
+
+    <input type="text" id="lastname" name="lastname" class="form-control" value="<%= @guest.try(:lastname) %>">
+  </div>
+
+  <!-- Label and input for firstname -->
+  <div class="form-group">
+    <label for="firstname">
+      Firstname
+    </label>
+
+    <input type="text" id="firstname" name="firstname" class="form-control" value="<%= @guest.try(:firstname) %>">
+  </div>
+
+  <!-- Label and input for dietary -->
+  <div class="form-group">
+    <label for="dietary">
+      Dietary
+    </label>
+
+    <textarea id="dietary" name="dietary" class="form-control" rows="3"><%= @guest.try(:dietary) %></textarea>
+  </div>
+
+  <!-- Label and input for image -->
+  <div class="form-group">
+    <label for="image">
+      Image
+    </label>
+
+    <input type="text" id="image" name="image" class="form-control" value="<%= @guest.try(:image) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create guest
+  </button>
+</form>
+
+<hr>
+
+<a href="/guests">
+  Go back
+</a>

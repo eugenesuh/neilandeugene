@@ -1,0 +1,56 @@
+<h1>
+  Song #<%= @song.id %> details
+</h1>
+
+<a href="/songs/<%= @song.id %>/edit">
+  Edit song
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Title
+  </dt>
+  <dd>
+    <%= @song.title %>
+  </dd>
+
+  <dt>
+    Artist
+  </dt>
+  <dd>
+    <%= @song.artist %>
+  </dd>
+
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @song.user_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@song.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@song.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_song/<%= @song.id %>">
+  Delete song
+</a>
+
+<hr>
+
+<a href="/songs">
+  Go back
+</a>

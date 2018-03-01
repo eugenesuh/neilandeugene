@@ -1,0 +1,44 @@
+<!-- Validation failure messages -->
+<% if @slike.errors.any? %>
+  <% @slike.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit slike #<%= @slike.id %>
+</h1>
+
+<hr>
+
+<form action="/update_slike/<%= @slike.id %>" method="post">
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @slike.user_id %>">
+  </div>
+
+  <!-- Label and input for song_id -->
+  <div class="form-group">
+    <label for="song_id">
+      Song
+    </label>
+
+    <input type="text" id="song_id" name="song_id" class="form-control" value="<%= @slike.song_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update slike
+  </button>
+</form>
+
+<hr>
+
+<a href="/slikes">
+  Go back
+</a>

@@ -1,0 +1,74 @@
+<h1>
+  All songs
+</h1>
+
+<a href="/songs/new">
+  Add a new song
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Title
+    </th>
+
+    <th>
+      Artist
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @songs.each do |song| %>
+  <tr>
+    <td>
+      <%= song.id %>
+    </td>
+
+    <td>
+      <%= song.title %>
+    </td>
+
+    <td>
+      <%= song.artist %>
+    </td>
+
+    <td>
+      <%= song.user_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(song.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(song.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/songs/<%= song.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,114 @@
+<h1>
+  All guests
+</h1>
+
+<a href="/guests/new">
+  Add a new guest
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Age
+    </th>
+
+    <th>
+      Status
+    </th>
+
+    <th>
+      Food
+    </th>
+
+    <th>
+      Lastname
+    </th>
+
+    <th>
+      Firstname
+    </th>
+
+    <th>
+      Dietary
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @guests.each do |guest| %>
+  <tr>
+    <td>
+      <%= guest.id %>
+    </td>
+
+    <td>
+      <%= guest.user_id %>
+    </td>
+
+    <td>
+      <%= guest.age %>
+    </td>
+
+    <td>
+      <%= guest.status %>
+    </td>
+
+    <td>
+      <%= guest.food %>
+    </td>
+
+    <td>
+      <%= guest.lastname %>
+    </td>
+
+    <td>
+      <%= guest.firstname %>
+    </td>
+
+    <td>
+      <%= guest.dietary %>
+    </td>
+
+    <td>
+      <%= guest.image %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(guest.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(guest.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/guests/<%= guest.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
