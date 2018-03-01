@@ -1,33 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>FinalProject</title>
-    <%= csrf_meta_tags %>
-
-    <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
+<head>
+  <title>
+    Neil+Eugene
+  </title>
     <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 
-    <!-- Connect Font Awesome CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.2/css/all.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <!-- Connect Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <%= render "shared/bootstrapcdn_assets" %>
 
-    <!-- Connect Bootstrap JavaScript and its dependencies -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</head>
 
-    <!-- Make it responsive to small screens -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<body>
+  <%= render "shared/navbar" %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
+  <div class="container">
+    <%= render "shared/flashes" %>
 
-  <body>
     <%= yield %>
-
-    <%= dev_tools if Rails.env.development? %>
-  </body>
+  </div>
+  <%= render "shared/jscript" %>
+</body>
 </html>

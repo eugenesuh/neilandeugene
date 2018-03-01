@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  # devise_for :users
   
+  devise_for :users do
+  match '/users/sign_out' => 'devise/sessions#destroy'
+end
+
   # Routes for the Guest resource:
   
   root "guests#index"
@@ -77,11 +82,6 @@ Rails.application.routes.draw do
   get("/delete_song/:id_to_remove", { :controller => "songs", :action => "destroy_row" })
 
   #------------------------------
-
- 
-
-  devise_for :users
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

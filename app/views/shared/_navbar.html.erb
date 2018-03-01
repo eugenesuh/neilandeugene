@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      Neil+Eugene
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-nav-links" aria-controls="collapsible-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsible-nav-links">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a href="/directors" class="nav-link">
+            Jukebox
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/movies" class="nav-link">
+            Activities
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/characters" class="nav-link">
+            Accomodation
+          </a>
+        </li>
+         <li class="nav-item">
+          <a href="/actors" class="nav-link">
+            Actors
+          </a>
+        </li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user == nil %>
+        <li class="nav-item">
+          <a href="/users/sign_in" class="nav-link">
+            Sign In 
+          </a>
+        </li>
+       
+        <li class="nav-item">
+          <a href="/users/sign_up" class="nav-link">
+            Sign Up
+          </a>
+        </li>
+        
+        <% else %>
+         <li class="nav-item">
+            <a href="/users/<%= current_user.id %>" class="nav-link">
+              <i class="fa fa-fw fa-user"></i>
+              <span class="hidden-sm">
+                My Wall
+              </span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="/my_likes" class="nav-link">
+              <i class="fa fa-fw fa-star"></i>
+              <span class="hidden-sm">
+                My Likes
+              </span>
+            </a>
+          </li>
+
+        
+        <li class="nav-item">
+          <a href="/users/edit" class="nav-link">
+            <%= current_user.username %>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/users/sign_out" data-method="delete" rel="nofollow" class="nav-link">
+            Sign Out
+          </a>
+        </li>
+  
+        <% end %>
+        
+      </ul>
+    </div> <!-- .navbar-collapse -->
+  </div> <!-- .container -->
+</nav>
