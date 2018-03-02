@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 20180301193111) do
   create_table "guests", force: :cascade do |t|
     t.integer "user_id"
     t.string "age"
-    t.string "status"
     t.string "food"
     t.string "lastname"
     t.string "firstname"
@@ -90,7 +89,8 @@ ActiveRecord::Schema.define(version: 20180301193111) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "username"
+    t.string "username", default: "", null: false
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

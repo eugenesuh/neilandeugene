@@ -13,7 +13,8 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string
 #  last_sign_in_ip        :string
-#  username               :string
+#  username               :string           default(""), not null
+#  status                 :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -42,6 +43,6 @@ class User < ApplicationRecord
   #has_many :hotels
   #has_many :hcomments
 
-  #validates :username, :presence => true, :uniqueness => true
+  validates :username, :presence => true, :uniqueness => true
 
 end

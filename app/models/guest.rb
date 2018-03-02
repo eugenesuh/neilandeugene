@@ -5,7 +5,6 @@
 #  id         :integer          not null, primary key
 #  user_id    :integer
 #  age        :string
-#  status     :string
 #  food       :string
 #  lastname   :string
 #  firstname  :string

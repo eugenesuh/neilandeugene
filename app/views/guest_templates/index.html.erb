@@ -1,6 +1,109 @@
-<h1>
-  All guests
-</h1>
+<div class="container">
+<h2>
+  Your RSVP
+</h2>
+
+<% if @current_user.guests != nil %>
+<div class="card card-background" style="background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=750&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D')">
+  <div class="card-body">
+    <h6 class="card-category text-info">NEIL + EUGENE's wedding</h6>
+    <a href="#pablo">
+      <h3 class="card-title">You are coming to our wedding!</h3>
+      </a>
+      <p class="card-description">
+        We are so excited to see you blah blah blah .........
+        ...
+        dfsdf
+        sdfsdf...
+        dfsdf
+        sdfsdf...
+        dfsdf
+        sdfsdf...
+        dfsdf
+        sdfsdf
+      </p>
+    <a href="/guests/new" class="btn btn-white btn-link">
+      <i class="material-icons">subject</i> Add new guest
+    </a>
+  </div>
+</div>
+<% else %>
+
+
+<form action="/rsvp" method="post">
+<div class="form-check">
+    <label label for="status" class="form-check-label">
+        <input id="status" class="form-check-input" type="checkbox">
+        Yes, we are coming!
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+</div>
+
+<div class="form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" type="checkbox">
+        Sorry, we can't make it.
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+</div>
+<button type="submit" class="btn btn-primary">RSVP</button>
+</form>
+
+<% end %>
+
+<div class = "container">
+<div class = "row">
+  <% @guests.each do |guest| %>
+  <div class = "col-6">
+  <div class="rotating-card-container">
+    <div class="card card-rotate card-background">
+        <div class="front front-background" style="background-image:url('https://images.unsplash.com/photo-1493787039806-2edcbe808750?auto=format&fit=crop&w=750&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');">
+            <div class="card-body">
+                <h6 class="card-category"></h6>
+                <a href="#pablo">
+                    <h3 class="card-title"></h3>
+                </a>
+                <p class="card-description">
+                    <%= guest.firstname %> <%= guest.lastname %>
+                </p>
+            </div>
+        </div>
+
+        <div class="back back-background" style="background-image: url('https://images.unsplash.com/photo-1493787039806-2edcbe808750?auto=format&fit=crop&w=750&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Guest Details
+                </h5>
+                <ul>
+                  <li class="card-description"><%= guest.food %> </li>
+                  <li class="card-description"><%= guest.dietary %> </li>
+                  <li class="card-description"><%= guest.age %> </li>
+                </ul>
+                <p class="card-description">Edit, view or delete the guest</p>
+                <div class="footer text-center">
+                    <a href="#pablo" class="btn btn-info btn-just-icon btn-fill btn-round">
+                        <i class="material-icons">subject</i>
+                    </a>
+                    <a href="#pablo" class="btn btn-success btn-just-icon btn-fill btn-round btn-wd">
+                        <i class="material-icons">mode_edit</i>
+                    </a>
+                    <a href="#pablo" class="btn btn-danger btn-just-icon btn-fill btn-round">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<% end %>
+</div>
+</div>
+
 
 <a href="/guests/new">
   Add a new guest
@@ -19,18 +122,6 @@
     </th>
 
     <th>
-      Age
-    </th>
-
-    <th>
-      Status
-    </th>
-
-    <th>
-      Food
-    </th>
-
-    <th>
       Lastname
     </th>
 
@@ -38,27 +129,13 @@
       Firstname
     </th>
 
-    <th>
-      Dietary
-    </th>
-
-    <th>
-      Image
-    </th>
-
-    <th>
-      Created at
-    </th>
-
-    <th>
-      Updated at
-    </th>
 
     <th>
     </th>
   </tr>
 
   <% @guests.each do |guest| %>
+  
   <tr>
     <td>
       <%= guest.id %>
@@ -66,18 +143,6 @@
 
     <td>
       <%= guest.user_id %>
-    </td>
-
-    <td>
-      <%= guest.age %>
-    </td>
-
-    <td>
-      <%= guest.status %>
-    </td>
-
-    <td>
-      <%= guest.food %>
     </td>
 
     <td>
@@ -89,22 +154,6 @@
     </td>
 
     <td>
-      <%= guest.dietary %>
-    </td>
-
-    <td>
-      <%= guest.image %>
-    </td>
-
-    <td>
-      <%= time_ago_in_words(guest.created_at) %> ago
-    </td>
-
-    <td>
-      <%= time_ago_in_words(guest.updated_at) %> ago
-    </td>
-
-    <td>
       <a href="/guests/<%= guest.id %>">
         Show details
       </a>
@@ -112,3 +161,4 @@
   </tr>
   <% end %>
 </table>
+</div>

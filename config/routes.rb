@@ -7,7 +7,7 @@ end
 
   # Routes for the Guest resource:
   
-  root "guests#index"
+  root "guests#home"
   
   # CREATE
   get("/guests/new", { :controller => "guests", :action => "new_form" })
@@ -20,6 +20,7 @@ end
   # UPDATE
   get("/guests/:prefill_with_id/edit", { :controller => "guests", :action => "edit_form" })
   post("/update_guest/:id_to_modify", { :controller => "guests", :action => "update_row" })
+  post("/rsvp/:id_to_modify", { :controller => "guests", :action => "rsvp" })
 
   # DELETE
   get("/delete_guest/:id_to_remove", { :controller => "guests", :action => "destroy_row" })
@@ -83,5 +84,8 @@ end
 
   #------------------------------
   
+  
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

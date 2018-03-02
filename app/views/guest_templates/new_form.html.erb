@@ -13,9 +13,7 @@
   Add a new guest
 </h1>
 
-<hr>
-
-<form action="/create_guest" method="post">
+<form action="/create_row" method="post">
   <!-- Label and input for user_id -->
   <div class="form-group">
     <label for="user_id">
@@ -24,6 +22,7 @@
 
     <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @guest.try(:user_id) %>">
   </div>
+  
 
   <!-- Label and input for age -->
   <div class="form-group">
@@ -32,15 +31,6 @@
     </label>
 
     <input type="text" id="age" name="age" class="form-control" value="<%= @guest.try(:age) %>">
-  </div>
-
-  <!-- Label and input for status -->
-  <div class="form-group">
-    <label for="status">
-      Status
-    </label>
-
-    <input type="text" id="status" name="status" class="form-control" value="<%= @guest.try(:status) %>">
   </div>
 
   <!-- Label and input for food -->
@@ -93,7 +83,6 @@
   </button>
 </form>
 
-<hr>
 
 <a href="/guests">
   Go back

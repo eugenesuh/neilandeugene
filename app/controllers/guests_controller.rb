@@ -1,6 +1,7 @@
 class GuestsController < ApplicationController
   def index
     @guests = Guest.all
+    @myguests = current_user.guests
 
     render("guest_templates/index.html.erb")
   end
@@ -20,7 +21,6 @@ class GuestsController < ApplicationController
 
     @guest.user_id = params.fetch("user_id")
     @guest.age = params.fetch("age")
-    @guest.status = params.fetch("status")
     @guest.food = params.fetch("food")
     @guest.lastname = params.fetch("lastname")
     @guest.firstname = params.fetch("firstname")
@@ -34,6 +34,19 @@ class GuestsController < ApplicationController
     else
       render("guest_templates/new_form.html.erb")
     end
+  end
+  
+    
+  def home
+    
+    render("layouts/home.html.erb")
+  end
+  
+  def rsvp
+    @guest = current_user.guest.id
+    @guest.status = params.fetch("status")
+
+    render("guest_templates/index.html.erb")
   end
 
   def edit_form
