@@ -34,15 +34,20 @@
     <input type="text" id="artist" name="artist" class="form-control" value="<%= @song.try(:artist) %>">
   </div>
 
-  <!-- Label and input for user_id -->
+  <!-- hidden input for user_id -->
+
+    <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
+
+<!-- Label and input for image_url -->
   <div class="form-group">
-    <label for="user_id">
-      User
+    <label for="image">
+      Image URL
     </label>
 
-    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @song.try(:user_id) %>">
+    <input type="text" id="image" name="image" class="form-control" value="<%= @song.try(:image) %>">
   </div>
-
+  
+  
   <button class="btn btn-block btn-outline-secondary">
     Create song
   </button>

@@ -49,16 +49,7 @@ end
   # Routes for the Slike resource:
 
   # CREATE
-  get("/slikes/new", { :controller => "slikes", :action => "new_form" })
   post("/create_slike", { :controller => "slikes", :action => "create_row" })
-
-  # READ
-  get("/slikes", { :controller => "slikes", :action => "index" })
-  get("/slikes/:id_to_display", { :controller => "slikes", :action => "show" })
-
-  # UPDATE
-  get("/slikes/:prefill_with_id/edit", { :controller => "slikes", :action => "edit_form" })
-  post("/update_slike/:id_to_modify", { :controller => "slikes", :action => "update_row" })
 
   # DELETE
   get("/delete_slike/:id_to_remove", { :controller => "slikes", :action => "destroy_row" })

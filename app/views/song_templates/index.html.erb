@@ -1,74 +1,100 @@
-<h1>
-  All songs
-</h1>
+  <div class="page-header header-filter" data-parallax="true" style=" background-image: url('../assets/img/kit/pro/examples/city.jpg'); height: 400px;">
+    <div class = "container">
+    <h2 class = "text-center">LIST OF SONGS</h2>
+    <h4 class = "description text-center">Please help us create list of dance time songs!</h4>
+      </div>
+    </div>
+        <div class="main main-raised" style="background-color:#EAEAEA">
+            <div class="profile-content">
+                <div class="container">
+                  <div class = "row">
+                <a href="/songs/new" class="btn btn-primary btn-round text-center mt-3">
+                <i class="material-icons">favorite</i> Add New Songs    
+                 </a>
+            </div>
+  
+<div class = "container">
+<div class = "row">
+<% @songs.each do |song| %>
+<div class = "col-4">
+  <div class="card">
+  <img class="card-img-top" src="<%= song.image %>" alt="Music!">
+  <div class="card-body">
+    <h4 class="card-title"><%= song.title %> by <%= song.artist %></h4>
+    
+      <% id = current_user.id %>
+    
+      <% if song.slikes.find_by(user_id: id) != nil %>
+                
+      <a href="/delete_slike/<%= song.slikes.find_by(user_id: id).id %>" class="btn btn-link pull-right">
+                  <i class="fa fa-fw fa-heart"></i> Unlike
+                </a>
+      <% else %>
+      
+                <form action="/create_slike" method="post">
+                  <input type="hidden" name="song_id" value="<%= song.id %>">
+                  <input type="hidden" name="user_id" value="<%= current_user.id %>">
+                  <small class="text-muted">be the first to like this</small>
+    
+                  <button class="btn btn-link pull-right">
+                    <i class="fa fa-fw fa-heart-o"></i>
+                    Like
+                  </button>
+                </form>
+      
+      <% end %>
+  
+    <p class="card-text">Proposed by <%= song.user.username %></p>
+    <p class="card-text"><% scomments = song.scomments %>
+      <% scomments.each do |scomment| %>
+      <ul>
+        <%= scomment.body %>
+      </ul>
+      <% end %></p>
+    
+              <div class="media-body">
+                <form action="/create_scomment" method="post">
 
-<a href="/songs/new">
-  Add a new song
-</a>
+                  <input type="hidden" name="song_id" value="<%= song.id %>">
 
-<hr>
+                  <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
-<table class="table">
-  <tr>
-    <th>
-      ID
-    </th>
+                  <!-- Label and input for body -->
+                  <div class="form-group">
+                    <label for="body" class="sr-only">
+                      Body
+                    </label>
 
-    <th>
-      Title
-    </th>
+                    <div class="input-group">
+                      <input type="text" id="body" name="body" class="form-control" placeholder="Add a comment..." required>
+                    </div> <!-- input-group -->
+                    <div>
+                      <span class="input-group-btn">
+                        <button class="btn btn-warning" type="submit">
+                          <i class="fa fa-fw fa-commenting-o"></i>
+                          Add Comment
+                        </button>
+                      </span>
+                    <% if current_user.id == song.user_id %>
+                    <a href="/songs/<%= song.id %>/edit" class="btn btn-dark btn-just-icon btn-fill btn-round btn-wd">
+                        <i class="material-icons">mode_edit</i>
+                    </a>
+                    <a href="/delete_song/<%= song.id %>" class="btn btn-danger btn-just-icon btn-fill btn-round">
+                        <i class="material-icons">delete</i>
+                    </a>
+                  <% else %>
+                  <% end %>
+                    </div>
+                  </div>  <!-- form-group -->
+                </form>
+              </div> <!-- media-body -->
 
-    <th>
-      Artist
-    </th>
-
-    <th>
-      User
-    </th>
-
-    <th>
-      Created at
-    </th>
-
-    <th>
-      Updated at
-    </th>
-
-    <th>
-    </th>
-  </tr>
-
-  <% @songs.each do |song| %>
-  <tr>
-    <td>
-      <%= song.id %>
-    </td>
-
-    <td>
-      <%= song.title %>
-    </td>
-
-    <td>
-      <%= song.artist %>
-    </td>
-
-    <td>
-      <%= song.user_id %>
-    </td>
-
-    <td>
-      <%= time_ago_in_words(song.created_at) %> ago
-    </td>
-
-    <td>
-      <%= time_ago_in_words(song.updated_at) %> ago
-    </td>
-
-    <td>
-      <a href="/songs/<%= song.id %>">
-        Show details
-      </a>
-    </td>
-  </tr>
-  <% end %>
-</table>
+   
+  </div>
+      
+</div>
+</div>
+<% end %>
+</div>
+</div>
+</div>

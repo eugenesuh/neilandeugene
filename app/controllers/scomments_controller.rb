@@ -25,7 +25,7 @@ class ScommentsController < ApplicationController
     if @scomment.valid?
       @scomment.save
 
-      redirect_to("/scomments", :notice => "Scomment created successfully.")
+      redirect_to("/songs", :notice => "Scomment created successfully.")
     else
       render("scomment_templates/new_form.html.erb")
     end

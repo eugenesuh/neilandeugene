@@ -36,17 +36,9 @@ class GuestsController < ApplicationController
     end
   end
   
-    
   def home
     
     render("layouts/home.html.erb")
-  end
-  
-  def rsvp
-    @guest = current_user.guest.id
-    @guest.status = params.fetch("status")
-
-    render("guest_templates/index.html.erb")
   end
 
   def edit_form
