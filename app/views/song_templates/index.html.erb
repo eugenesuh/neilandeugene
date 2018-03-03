@@ -27,7 +27,7 @@
       <% if song.slikes.find_by(user_id: id) != nil %>
                 
       <a href="/delete_slike/<%= song.slikes.find_by(user_id: id).id %>" class="btn btn-link pull-right">
-                  <i class="fa fa-fw fa-heart"></i> Unlike
+                  <i class="fa fa-fw fa-heart"></i> <%= song.slikes.count %>
                 </a>
       <% else %>
       
@@ -38,25 +38,23 @@
     
                   <button class="btn btn-link pull-right">
                     <i class="fa fa-fw fa-heart-o"></i>
-                    Like
+                    <%= song.slikes.count %>
                   </button>
                 </form>
       
       <% end %>
   
     <p class="card-text">Proposed by <%= song.user.username %></p>
-    <p class="card-text"><% scomments = song.scomments %>
+    <p class="card-text" style="max-height: 30px">
+      <% scomments = song.scomments %>
       <% scomments.each do |scomment| %>
       <ul>
         <%= scomment.body %>
       </ul>
-      <% end %></p>
-    
-              <div class="media-body">
-                <form action="/create_scomment" method="post">
-
+      
+      <% end %>
+   <form action="/create_scomment" method="post">
                   <input type="hidden" name="song_id" value="<%= song.id %>">
-
                   <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
                   <!-- Label and input for body -->
@@ -87,9 +85,7 @@
                     </div>
                   </div>  <!-- form-group -->
                 </form>
-              </div> <!-- media-body -->
-
-   
+   </p>
   </div>
       
 </div>

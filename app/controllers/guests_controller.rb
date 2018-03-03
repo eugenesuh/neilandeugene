@@ -37,7 +37,12 @@ class GuestsController < ApplicationController
   end
   
   def home
+    @users = User.all
+    @rsvps = Rsvp.all
+    @guests = Guest.all
     
+    @rsvp = @rsvps.find_by(user_id: current_user.id)
+
     render("layouts/home.html.erb")
   end
 
@@ -74,5 +79,27 @@ class GuestsController < ApplicationController
     @guest.destroy
 
     redirect_to("/guests", :notice => "Guest deleted successfully.")
+  end
+  
+    def rsvp_new
+    @rsvp = Rsvp.new
+
+    @rsvp.user_id = params.fetch("user_id")
+    @rsvp.status = params.fetch("status")
+    @rsvp.save
+
+    redirect_to("/", :notice => "Rsvp created successfully.")
+  end
+
+
+  def rsvp_update
+    @rsvp = Rsvp.find_by(user_id: current_user.id)
+
+    @rsvp.user_id = current_user.id    
+    @rsvp.status = params.fetch("status")
+    @rsvp.save
+
+      redirect_to("/guests", :notice => "Rsvp updated successfully.")
+    
   end
 end

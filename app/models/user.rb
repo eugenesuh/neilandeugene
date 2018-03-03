@@ -42,6 +42,8 @@ class User < ApplicationRecord
   #has_many :alikes
   #has_many :hotels
   #has_many :hcomments
+  
+  has_many :rsvps
 
   validates :username, :presence => true, :uniqueness => true
 

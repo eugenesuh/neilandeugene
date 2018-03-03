@@ -67,9 +67,13 @@
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">For Neil and Eugene's Wedding on December 16th, 2018: </h4>
-                  <form action="/rsvp" method="post">
+                  
+                  <% if Rsvp.find_by(user_id: current_user.id) == nil %>
+                  <form action="/create_rsvp" method="post">
                         <div class = "col-ml-8 mr-auto ml-auto">
                           <div class="form-check form-check-radio">
+                            <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
+                            
                             <label class="form-check-label">
                                 <input class="form-check-input" type="radio" name="status" id="status" value="yes" >
                                 Accept with Pleasure
@@ -88,9 +92,46 @@
                                 </span>
                             </label>
                           </div>
+                           <button class="btn btn-block btn-outline-secondary">
+                            Submit
+                          </button>
                   </form>
-                  <a href="/guests" class="btn btn-dark">Submit</a>
-                </div>
+                  
+                  <% else %>
+                  <div class="card card-background" style="background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=750&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D')">
+                  <div class="card-body">
+                    <h6 class="card-category text-info">NEIL + EUGENE's wedding</h6>
+                    <a href="#pablo">
+                    <% if Rsvp.find_by(user_id: current_user.id).status == "yes" %>
+
+                      <h3 class="card-title">You are coming to our wedding!</h3>
+                      </a>
+                      <p class="card-description">
+                        We are so excited to see you blah blah blah .........
+                        ...
+                        dfsdf
+                        sdfsdf...
+                        dfsdf
+                        sdfsdf...
+                        dfsdf
+                        sdfsdf...
+                        dfsdf
+                        sdfsdf
+                      </p>
+                      <% else %>
+                      <h3 class="card-title">Sorry, you are not coming next time</h3>
+                      </a>
+                      <p class="card-description">
+                       blah blah
+                      </p>
+                      <% end %>
+                    <a class="btn btn-white btn-link" data-toggle="modal" data-target="#update" >
+                      <i class="material-icons">subject</i> Edit My RSVP Status
+                    </a>
+                      </div>
+                    </div>
+            
+                <% end %>
               </div>
               </div>
         </div>
@@ -350,5 +391,50 @@
             </nav>
         </div>
     </footer>
+
+
+
+<!-- Modal -->
+                        <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="update">Edit My RSVP</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <form action="/update_rsvp" method="post">
+                                <div class = "col-ml-8 mr-auto ml-auto">
+                                  <div class="form-check form-check-radio">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="status" id="status" value="yes" >
+                                        Accept with Pleasure
+                                        <span class="circle">
+                                            <span class="check bg-dark"></span>
+                                        </span>
+                                    </label>
+                                  </div>
+                                
+                                  <div class="form-check form-check-radio">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input bg-dark" type="radio" name="status" id="status" value="no" checked>
+                                        Decline with Regret
+                                        <span class="circle">
+                                            <span class="check bg-dark"></span>
+                                        </span>
+                                    </label>
+                                  </div>
+                                  <button class="btn btn-primary pull-right">
+                                    Submit
+                                  </button> 
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                  
+
 
 </body>

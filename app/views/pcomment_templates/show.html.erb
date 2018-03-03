@@ -1,0 +1,56 @@
+<h1>
+  Pcomment #<%= @pcomment.id %> details
+</h1>
+
+<a href="/pcomments/<%= @pcomment.id %>/edit">
+  Edit pcomment
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @pcomment.user_id %>
+  </dd>
+
+  <dt>
+    Photo
+  </dt>
+  <dd>
+    <%= @pcomment.photo_id %>
+  </dd>
+
+  <dt>
+    Body
+  </dt>
+  <dd>
+    <%= @pcomment.body %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@pcomment.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@pcomment.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_pcomment/<%= @pcomment.id %>">
+  Delete pcomment
+</a>
+
+<hr>
+
+<a href="/pcomments">
+  Go back
+</a>
