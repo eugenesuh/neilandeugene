@@ -1,0 +1,60 @@
+  <div class="page-header header-filter" data-parallax="true" style=" background-image: url('https://static.pexels.com/photos/207962/pexels-photo-207962.jpeg'); height: 400px;">
+    <div class = "container">
+    <h2 class = "text-center">MY LIKES</h2>
+    <h4 class = "description text-center">List of liked Activities, Songs, and Photos</h4>
+      </div>
+    </div>
+        <div class="main main-raised" style="background-color:#EAEAEA">
+            <div class="profile-content">
+                <div class="container">
+                  <div class = "row">
+                <a href="/activities/new" class="btn btn-primary btn-round text-center mt-3">
+                <i class="material-icons">favorite</i> Add New activity    
+                 </a>
+                 
+                <a href="/songs/new" class="btn btn-primary btn-round text-center mt-3">
+                <i class="material-icons">favorite</i> Add New Song   
+                 </a>
+                 
+                 <a href="/photos/new" class="btn btn-primary btn-round text-center mt-3">
+                <i class="material-icons">favorite</i> Add New Photo   
+                 </a>
+            </div>
+  
+<div class = "container">
+<div class = "row">
+  <h2>My Liked Songs</h2>
+<% @slikes.each do |slike| %>
+<div class = "col-4">
+  <div class="card">
+  <img class="card-img-top" src="<%= slike.song_id %>" alt="Music!">
+  <div class="card-body">
+    <h4 class="card-title"><%= slike.song.title %> by <%= slike.song.artist %>
+    
+      <% id = current_user.id %>
+    
+      <a href="/delete_slike/<%= slike.song.find_by(user_id: id).id %>" class="btn btn-link pull-right p-0">
+                  <i class="fa fa-fw fa-heart"></i> UNLIKE
+                </a>
+  </h4>
+
+                    <a href="/songs/<%= slike.song_id %>" class=" h6 text-muted pull-right">
+                        Show Details
+                    </a>
+                    <% if current_user.id == slike.song.user_id %>
+                    <a href="/songs/<%= song.id %>/edit" class="btn btn-dark btn-just-icon btn-fill btn-round btn-wd">
+                        <i class="material-icons">mode_edit</i>
+                    </a>
+                    <a href="/delete_song/<%= slike.song_id %>" class="btn btn-danger btn-just-icon btn-fill btn-round">
+                        <i class="material-icons">delete</i>
+                    </a>
+                  <% else %>
+                  <% end %>   
+                    </div>
+                  </div>  
+  
+   
+  </div>
+<% end %>
+</div>
+</div>

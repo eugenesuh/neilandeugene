@@ -1,0 +1,107 @@
+<div class="page-header header-filter" data-parallax="true" style=" background-image: url('<%= @activity.image %>'); height: 500px;">
+    <div class = "container">
+    <h2 class = "text-center"><%= @activity.name %></h2>
+    <h4 class = "description text-center"><%= @activity.description %></h4>
+      </div>
+</div>
+<div class="main main-raised" style="background-color:#fcf8f8">
+<div class = "profile-content">
+  <div class = "container">
+    <a href="/activities/<%= @activity.id %>/edit" class="btn btn-primary btn-round text-center mt-3"><i class="material-icons">mode_edit</i> Edit activity</a>
+  </div>
+  <div class = "container mt-3">
+    <div class = "row">
+      <div class = "col-6">
+<dl>
+  <dt>
+    Activity Name
+  </dt>
+  <dd>
+    <%= @activity.name %>
+  </dd>
+  
+  <dt>
+    Description
+  </dt>
+  <dd>
+    <%= @activity.description %>
+  </dd>
+  
+  <dt>
+    Proposed by: 
+  </dt>
+  <dd class = "h6">
+    <%= @activity.user.username %> 
+  </dd>
+  
+  <dt class = "mt-4">
+    Distance & Driving Time from the Wedding (Arizona Biltmore)
+  </dt>
+  <dd>
+  <li>
+    Distance: <%= @activity.distance %>
+  </li>
+  <li>
+    Driving Time: <%= @activity.duration %>
+  </li>
+  </dd>
+
+<dt>
+  Google Maps Search: <%= @activity.keyword %>
+</dt>
+<dd>
+<iframe
+  width="450"
+  height="350"
+  frameborder="0" style="border:0"
+  src="//www.google.com/maps/embed/v1/place?key=AIzaSyBKJf2ypC5_Yx4NV_6Na_u1k87r7q-j8nc&q=<%=@key%>" allowfullscreen>
+  </iframe>
+</dd>
+
+</dl>
+</div>
+
+<div class = "col-6">
+  
+  <p class="card-text">
+    <h5 class = "name">Comment Log</h5>
+      <% acomments = @activity.acomments %>
+      <% acomments.each do |acomment| %>
+      <ul class="p-0 m-0">
+        <%= acomment.body %>
+        <a href="/delete_acomment/<%= acomment.id %>" class = "pull-right"> Delete </a>
+      </ul>
+      <% end %>
+   <form action="/create_acomment" method="post">
+                  <input type="hidden" name="activity_id" value="<%= @activity.id %>">
+                  <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+                  <!-- Label and input for body -->
+                  <div class="form-group">
+                    <label for="body" class="sr-only">
+                      Body
+                    </label>
+
+                    <div class="input-group">
+                      <input type="text" id="body" name="body" class="form-control" placeholder="Add a comment..." required>
+                    </div> <!-- input-group -->
+                    <div>
+                      <span class="input-group-btn">
+                        <button class="btn btn-warning" type="submit">
+                          <i class="fa fa-fw fa-commenting-o"></i>
+                          Add Comment
+                        </button>
+                      </span>
+                        
+                        <a href="/activities" class = "text-muted mb-3 p-3 h6 pull-right"> Go Back </a>
+
+                      </p>
+  
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

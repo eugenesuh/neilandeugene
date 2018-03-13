@@ -27,6 +27,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+         
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
@@ -34,17 +35,15 @@ class User < ApplicationRecord
   has_many :slikes
   has_many :songs
   has_many :scomments
-  #has_many :photos
-  #has_many :plikes
-  #has_many :pcomments
-  #has_many :activities
-  #has_many :acomments
-  #has_many :alikes
-  #has_many :hotels
-  #has_many :hcomments
+  has_many :photos
+  has_many :plikes
+  has_many :pcomments
+  has_many :activities
+  has_many :acomments
+  has_many :alikes
   
   has_many :rsvps
 
   validates :username, :presence => true, :uniqueness => true
-
+  
 end

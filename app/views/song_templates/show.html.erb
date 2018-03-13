@@ -1,13 +1,17 @@
-<h1>
-  Song #<%= @song.id %> details
-</h1>
-
-<a href="/songs/<%= @song.id %>/edit">
-  Edit song
-</a>
-
-<hr>
-
+<div class="page-header header-filter" data-parallax="true" style=" background-image: url('<%= @song.image %>'); height: 500px;">
+    <div class = "container">
+    <h2 class = "text-center">SONG DETAIL</h2>
+    <h4 class = "description text-center">of <%= @song.title %></h4>
+      </div>
+</div>
+<div class="main main-raised" style="background-color:#EAEAEA">
+<div class = "profile-content">
+  <div class = "container">
+    <a href="/songs/<%= @song.id %>/edit" class="btn btn-primary btn-round text-center mt-3"><i class="material-icons">mode_edit</i> Edit Song</a>
+  </div>
+  <div class = "container mt-3">
+    <div class = "row">
+      <div class = "col-6">
 <dl>
   <dt>
     Title
@@ -24,33 +28,52 @@
   </dd>
 
   <dt>
-    User
-  </dt>
-  <dd>
-    <%= @song.user_id %>
-  </dd>
-
-  <dt>
     Created at
   </dt>
   <dd>
     <%= time_ago_in_words(@song.created_at) %> ago
   </dd>
 
-  <dt>
-    Updated at
-  </dt>
-  <dd>
-    <%= time_ago_in_words(@song.updated_at) %> ago
-  </dd>
 </dl>
+</div>
 
-<a href="/delete_song/<%= @song.id %>">
-  Delete song
-</a>
+<div class = "col-6">
+  
+  <p class="card-text">
+    <h5 class = "title">Comment Log</h5>
+      <% scomments = @song.scomments %>
+      <% scomments.each do |scomment| %>
+      <ul class="p-0 m-0">
+        <%= scomment.body %>
+        <a href="/delete_scomment/<%= scomment.id %>" class = "pull-right"> Delete </a>
+      </ul>
+      <% end %>
+   <form action="/create_scomment" method="post">
+                  <input type="hidden" name="song_id" value="<%= @song.id %>">
+                  <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
-<hr>
+                  <!-- Label and input for body -->
+                  <div class="form-group">
+                    <label for="body" class="sr-only">
+                      Body
+                    </label>
 
-<a href="/songs">
-  Go back
-</a>
+                    <div class="input-group">
+                      <input type="text" id="body" name="body" class="form-control" placeholder="Add a comment..." required>
+                    </div> <!-- input-group -->
+                    <div>
+                      <span class="input-group-btn">
+                        <button class="btn btn-warning" type="submit">
+                          <i class="fa fa-fw fa-commenting-o"></i>
+                          Add Comment
+                        </button>
+                      </span>
+                      </p>
+  
+</div>
+</div>
+
+</div>
+  <a href="/songs" class = "text-muted mb-3 h6 align-center"> Go Back to List of Songs </a>
+</div>
+</div>

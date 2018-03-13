@@ -18,5 +18,7 @@ class Song < ApplicationRecord
   has_many :slikes
   has_many :scomments
   
+  mount_uploader :image, ImageUploader
+
   validates :user_id, :presence => true
 end

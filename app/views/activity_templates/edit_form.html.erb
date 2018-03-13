@@ -1,0 +1,85 @@
+<div class="page-header header-filter" data-parallax="true" style=" background-image: url('<%= @activity.image %>'); height: 400px;">
+    <div class = "container">
+    <h2 class = "text-center">UPDATE ACTIVITY</h2>
+    <h4 class = "description text-center">A collection of fun things to do in the area. Please add yours!
+</h4>
+      </div>
+    </div>
+<div class="main main-raised" style="background-color:#EAEAEA">
+            <div class="profile-content">
+<div class = "container">
+
+
+<!-- Validation failure messages -->
+<% if @activity.errors.any? %>
+  <% @activity.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<hr>
+
+<form action="/update_activity/<%= @activity.id %>" method="post">
+    <!-- Label and input for image_url -->
+
+  <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+   <div class="fileinput-new thumbnail img-raised">
+	<img src="<%= @activity.image %>" alt="image">
+   </div>
+   <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+   <div>
+	<span class="btn btn-raised btn-round btn-default btn-file">
+	   <span class="fileinput-new">Select image</span>
+	   <span class="fileinput-exists">Change</span>
+	   <input type="file" id="image" name="image" value="<%= @activity.image %>" />
+	</span>
+        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+        <i class="fa fa-times"></i> Remove</a>
+   </div>
+  </div>
+  
+  <!-- Label and input for name -->
+  <div class="form-group">
+    <label for="name">
+      Name
+    </label>
+
+    <input type="text" id="name" name="name" class="form-control" value="<%= @activity.try(:name) %>">
+  </div>
+
+  <!-- Label and input for description -->
+  <div class="form-group">
+    <label for="description">
+      Description
+    </label>
+
+    <input type="text" id="description" name="description" class="form-control" value="<%= @activity.try(:description) %>">
+  </div>
+  
+ <!-- Label and input for keyword -->
+  <div class="form-group">
+    <label for="keyword">
+      Keyword for Google Maps
+    </label>
+
+    <input type="keyword" id="keyword" name="keyword" class="form-control" value="<%= @activity.try(:keyword) %>">
+  </div>
+  
+   <!-- hidden input for user_id -->
+
+    <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
+
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update activity
+  </button>
+</form>
+
+
+ <a href="/activitys" class = "text-muted mb-3 h6 align-center"> Go Back to List of activitys </a>
+
+</div>
+</div>
+</div>

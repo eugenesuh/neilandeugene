@@ -1,164 +1,151 @@
-<div class="container">
-<h2>
-  
-</h2>
-
-<% if @current_user.guests != nil %>
-<div class="card card-background" style="background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=750&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D')">
-  <div class="card-body">
-    <h6 class="card-category text-info">NEIL + EUGENE's wedding</h6>
-    <a href="#pablo">
-      <h3 class="card-title">You are coming to our wedding!</h3>
-      </a>
-      <p class="card-description">
-        We are so excited to see you blah blah blah .........
-        ...
-        dfsdf
-        sdfsdf...
-        dfsdf
-        sdfsdf...
-        dfsdf
-        sdfsdf...
-        dfsdf
-        sdfsdf
-      </p>
-    <a href="/guests/new" class="btn btn-white btn-link">
-      <i class="material-icons">subject</i> Add new guest
-    </a>
-  </div>
-</div>
-<% else %>
-
-
-<form action="/rsvp" method="post">
-<div class="form-check">
-    <label label for="status" class="form-check-label">
-        <input id="status" class="form-check-input" type="checkbox">
-        Yes, we are coming!
-        <span class="form-check-sign">
-            <span class="check"></span>
-        </span>
-    </label>
-</div>
-
-<div class="form-check">
-    <label class="form-check-label">
-        <input class="form-check-input" type="checkbox">
-        Sorry, we can't make it.
-        <span class="form-check-sign">
-            <span class="check"></span>
-        </span>
-    </label>
-</div>
-<button type="submit" class="btn btn-primary">RSVP</button>
-</form>
-
-<% end %>
-
-<div class = "container">
-<div class = "row">
-  <% @guests.each do |guest| %>
-  <div class = "col-4">
-  <div class="rotating-card-container">
-    <div class="card card-rotate card-background">
-        <div class="front front-background" style="background-image:url('https://images.unsplash.com/photo-1493787039806-2edcbe808750?auto=format&fit=crop&w=750&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');">
-            <div class="card-body">
-                <h6 class="card-category"></h6>
-                <a href="#pablo">
-                    <h3 class="card-title"></h3>
-                </a>
-                <p class="card-description">
-                    <%= guest.firstname %> <%= guest.lastname %>
-                </p>
-            </div>
-        </div>
-
-        <div class="back back-background" style="background-image: url('https://images.unsplash.com/photo-1493787039806-2edcbe808750?auto=format&fit=crop&w=750&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');">
-            <div class="card-body">
-                <h5 class="card-title">
-                    Guest Details
-                </h5>
-                <ul>
-                  <li class="card-description"><%= guest.food %> </li>
-                  <li class="card-description"><%= guest.dietary %> </li>
-                  <li class="card-description"><%= guest.age %> </li>
-                </ul>
-                <p class="card-description">Edit, view or delete the guest</p>
-                <div class="footer text-center">
-                    <a href="#pablo" class="btn btn-info btn-just-icon btn-fill btn-round">
-                        <i class="material-icons">subject</i>
-                    </a>
-                    <a href="#pablo" class="btn btn-success btn-just-icon btn-fill btn-round btn-wd">
-                        <i class="material-icons">mode_edit</i>
-                    </a>
-                    <a href="#pablo" class="btn btn-danger btn-just-icon btn-fill btn-round">
-                        <i class="material-icons">delete</i>
-                    </a>
+<div class="page-header header-filter" data-parallax="true" style=" background-image: url('https://s-ec.bstatic.com/images/hotel/max1024x768/739/73953727.jpg'); height: 400px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                    <h1 class="title">Your RSVP</h1>
+                    <h4>December 16th, 2018 @ Arizona Biltmore, Arizona PX, USA</h4>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</div>
-<% end %>
-</div>
 </div>
 
+<div class="main main-raised">
+  <div class="container">
+      <div class="about-description text-center">
+        <div class="row">
+         <div class="col-md-8 ml-auto mr-auto">
+          <% if Rsvp.find_by(user_id: current_user.id) == nil %>
+                      <h5 class="description">Please RSVP for our wedding:</h5>
+                        <form action="/create_rsvp" method="post">
+                        <div class = "col-ml-8 mr-auto ml-auto">
+                          <div class="form-check form-check-radio">
+                            <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
+                            
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="status" id="status" value="yes" >
+                                Accept with Pleasure
+                                <span class="circle">
+                                    <span class="check bg-dark"></span>
+                                </span>
+                            </label>
+                          </div>
+                        
+                          <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input bg-dark" type="radio" name="status" id="status" value="no" checked>
+                                Decline with Regret
+                                <span class="circle">
+                                    <span class="check bg-dark"></span>
+                                </span>
+                            </label>
+                          </div>
+                           <button class="btn btn-block btn-outline-secondary">
+                            Submit
+                          </button>
+                    </div>
+                  </form>
+    
+          <% elsif Rsvp.find_by(user_id: current_user.id).status == "no" %>
+                        <h5 class="description mt-4">I am sorry you can't make it. Let's catch up next time!</h5>
+                        
+                        <a class="btn btn-dark btn-link" data-toggle="modal" data-target="#update" >
+                        <i class="material-icons">subject</i> Edit My RSVP Status 
+                        </a>
+                        
+          <% else %>
+          <h5 class="description mt-4">You are coming! Party On!</h5>
+           
+           <a class="btn btn-dark btn-link" data-toggle="modal" data-target="#update" >
+                        <i class="material-icons">subject</i> Edit My RSVP Status 
+                        </a>
 
-<a href="/guests/new">
-  Add a new guest
-</a>
-
-<hr>
-
-<table class="table">
-  <tr>
-    <th>
-      ID
-    </th>
-
-    <th>
-      User
-    </th>
-
-    <th>
-      Lastname
-    </th>
-
-    <th>
-      Firstname
-    </th>
-
-
-    <th>
-    </th>
-  </tr>
-
-  <% @guests.each do |guest| %>
+          <h2 class="section-title">Your RSVP Details</h2>
+          <a href="/guests/new" class="btn btn-primary btn-round text-center mt-3">
+                <i class="material-icons">favorite</i> Add New Guest    
+                 </a>
+          <div class = "container m-0 p-0">
+            <div class = "row">
+            <% @myguests.each do |guest| %>
+                <div class="col-6">
+                    <div class="card card-blog">
+                        <div class="card-header card-header-image">
+                            <a href="#pablo">
+                                <img src="<%=guest.image %>" alt="../assets/img/kit/pro/dg6.jpg">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-category text-rose">Reservation Details</h6>
+                            <h4 class="card-title">
+                              <%= guest.firstname %> <%= guest.lastname %>
+                            </h4>
+                            <p>
+                          <ul class="text-left" style="display:inline-block;vertical-align:middle";>
+                            <li> <p class="h6 m-0">Age Group:</p> <%= guest.age %> </li>
+                            <li><p class="h6 m-0">Dietary Restriction:</p>  <%= guest.dietary %> </li>
+                            <li><p class="h6 m-0">Entree Option:</p>  <%= guest.food %> </li>
+                          </ul>
+                          <p class="card-description">Edit or delete your guest</p>
+                          <div class="footer text-center">
+                              <a href="/guests/<%= guest.id %>/edit" class="btn btn-dark btn-just-icon btn-fill btn-round btn-wd">
+                                  <i class="material-icons">mode_edit</i>
+                              </a>
+                              <a href="/delete_guest/<%= guest.id %>" class="btn btn-danger btn-just-icon btn-fill btn-round">
+                                  <i class="material-icons">delete</i>
+                              </a>
+                          </div>  
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+            </div>
+            </div>
+      <% end %>
   
-  <tr>
-    <td>
-      <%= guest.id %>
-    </td>
-
-    <td>
-      <%= guest.user_id %>
-    </td>
-
-    <td>
-      <%= guest.lastname %>
-    </td>
-
-    <td>
-      <%= guest.firstname %>
-    </td>
-
-    <td>
-      <a href="/guests/<%= guest.id %>">
-        Show details
-      </a>
-    </td>
-  </tr>
-  <% end %>
-</table>
+  </div>
+  </div>
 </div>
+ </div>
+</div>
+
+<!-- Modal -->
+                        <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="update">Edit My RSVP</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <form action="/update_rsvp" method="post">
+                                <div class = "col-ml-8 mr-auto ml-auto">
+                                  <div class="form-check form-check-radio">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="status" id="status" value="yes" >
+                                        Accept with Pleasure
+                                        <span class="circle">
+                                            <span class="check bg-dark"></span>
+                                        </span>
+                                    </label>
+                                  </div>
+                                
+                                  <div class="form-check form-check-radio">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input bg-dark" type="radio" name="status" id="status" value="no" checked>
+                                        Decline with Regret
+                                        <span class="circle">
+                                            <span class="check bg-dark"></span>
+                                        </span>
+                                    </label>
+                                  </div>
+                                  <button class="btn btn-primary pull-right">
+                                    Submit
+                                  </button> 
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                  

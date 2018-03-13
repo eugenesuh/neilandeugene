@@ -1,4 +1,61 @@
 Rails.application.routes.draw do
+  # Routes for the Activity resource:
+
+  # CREATE
+  get("/activities/new", { :controller => "activities", :action => "new_form" })
+  post("/create_activity", { :controller => "activities", :action => "create_row" })
+
+  # READ
+  get("/activities", { :controller => "activities", :action => "index" })
+  get("/activities/:id_to_display", { :controller => "activities", :action => "show" })
+
+  # UPDATE
+  get("/activities/:prefill_with_id/edit", { :controller => "activities", :action => "edit_form" })
+  post("/update_activity/:id_to_modify", { :controller => "activities", :action => "update_row" })
+
+  # DELETE
+  get("/delete_activity/:id_to_remove", { :controller => "activities", :action => "destroy_row" })
+
+  #------------------------------
+
+  # Routes for the Alike resource:
+
+  # CREATE
+  get("/alikes/new", { :controller => "alikes", :action => "new_form" })
+  post("/create_alike", { :controller => "alikes", :action => "create_row" })
+
+  # READ
+  get("/alikes", { :controller => "alikes", :action => "index" })
+  get("/alikes/:id_to_display", { :controller => "alikes", :action => "show" })
+
+  # UPDATE
+  get("/alikes/:prefill_with_id/edit", { :controller => "alikes", :action => "edit_form" })
+  post("/update_alike/:id_to_modify", { :controller => "alikes", :action => "update_row" })
+
+  # DELETE
+  get("/delete_alike/:id_to_remove", { :controller => "alikes", :action => "destroy_row" })
+
+  #------------------------------
+
+  # Routes for the Acomment resource:
+
+  # CREATE
+  get("/acomments/new", { :controller => "acomments", :action => "new_form" })
+  post("/create_acomment", { :controller => "acomments", :action => "create_row" })
+
+  # READ
+  get("/acomments", { :controller => "acomments", :action => "index" })
+  get("/acomments/:id_to_display", { :controller => "acomments", :action => "show" })
+
+  # UPDATE
+  get("/acomments/:prefill_with_id/edit", { :controller => "acomments", :action => "edit_form" })
+  post("/update_acomment/:id_to_modify", { :controller => "acomments", :action => "update_row" })
+
+  # DELETE
+  get("/delete_acomment/:id_to_remove", { :controller => "acomments", :action => "destroy_row" })
+
+  #------------------------------
+
   # Routes for the Rsvp resource:
 
   # CREATE
@@ -82,6 +139,8 @@ Rails.application.routes.draw do
 
   # READ
   get("/guests", { :controller => "guests", :action => "index" })
+  get("/guests/likes", { :controller => "guests", :action => "likes" })
+
   get("/guests/:id_to_display", { :controller => "guests", :action => "show" })
 
   # UPDATE

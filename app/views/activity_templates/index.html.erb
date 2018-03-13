@@ -1,0 +1,99 @@
+  <div class="page-header header-filter" data-parallax="true" style=" background-image: url('../assets/img/kit/pro/bg7.jpg'); height: 400px;">
+    <div class = "container">
+    <h2 class = "text-center">TRAVEL</h2>
+    <h4 class = "description text-center">A collection of fun things to do in the area. Please add yours!</h4>
+      </div>
+    </div>
+        <div class="main main-raised" style="background-color:#EAEAEA">
+            <div class="profile-content">
+                <div class="container">
+                  <div class = "row">
+                <a href="/activities/new" class="btn btn-primary btn-round text-center mt-3">
+                <i class="material-icons">favorite</i> Add New Activity   
+                 </a>
+            </div>
+  
+<div class = "container">
+<div class = "row">
+<% @activities.each do |activity| %>
+<div class = "col-4">
+  <div class="card">
+  <img class="card-img-top" src="<%= activity.image %>" alt="Music!">
+  <div class="card-body">
+    <h4 class="card-title"><%= activity.name %>
+    
+      <% id = current_user.id %>
+    
+      <% if activity.alikes.find_by(user_id: id) != nil %>
+                
+      <a href="/delete_alike/<%= activity.alikes.find_by(user_id: id).id %>" class="btn btn-link pull-right p-0">
+                  <i class="fa fa-fw fa-heart"></i> <%= activity.alikes.count %>
+                </a>
+      <% else %>
+      
+                <form action="/create_alike" method="post">
+                  <input type="hidden" name="activity_id" value="<%= activity.id %>">
+                  <input type="hidden" name="user_id" value="<%= current_user.id %>">
+                  <button class="btn btn-link pull-right p-0">
+                    <i class="fa fa-fw fa-heart-o"></i>
+                    <%= activity.alikes.count %>
+                  </button>
+                </form>
+      
+      <% end %>
+  </h4>
+    <p class="card-text">
+    <p class = "h6">Proposed by <%= activity.user.username %></p>
+    <p class = "h6 text-muted">Drive: <%= activity.duration %></p>
+    <p class = "h7 text-muted"><%= activity.description %></p>
+
+      <% acomments = activity.acomments.last(4) %>
+      <% acomments.each do |acomment| %>
+      <ul class="p-0 m-0">
+      <p class = "h6"><%= acomment.user.username %>:</p> <%= acomment.body %>
+        <a href="/delete_acomment/<%= acomment.id %>" class = "pull-right"> Delete </a>
+      </ul>
+      <% end %>
+   <form action="/create_acomment" method="post">
+                  <input type="hidden" name="activity_id" value="<%= activity.id %>">
+                  <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+                  <!-- Label and input for body -->
+                  <div class="form-group">
+                    <label for="body" class="sr-only">
+                      Body
+                    </label>
+
+                    <div class="input-group">
+                      <input type="text" id="body" name="body" class="form-control" placeholder="Add a comment..." required>
+                    </div> <!-- input-group -->
+                    <div>
+                      <span class="input-group-btn">
+                        <button class="btn btn-warning" type="submit">
+                          <i class="fa fa-fw fa-commenting-o"></i>
+                          Add Comment
+                        </button>
+                      </span>
+                    <a href="/activities/<%= activity.id %>" class=" h6 text-muted pull-right">
+                        Show Details
+                    </a>
+                    <% if current_user.id == activity.user_id %>
+                    <a href="/activities/<%= activity.id %>/edit" class="btn btn-dark btn-just-icon btn-fill btn-round btn-wd">
+                        <i class="material-icons">mode_edit</i>
+                    </a>
+                    <a href="/delete_activity/<%= activity.id %>" class="btn btn-danger btn-just-icon btn-fill btn-round">
+                        <i class="material-icons">delete</i>
+                    </a>
+                  <% else %>
+                  <% end %>   
+                    </div>
+                  </div>  <!-- form-group -->
+                </form>
+   </p>
+  </div>
+</div>
+</div>
+<% end %>
+</div>
+</div>
+</div>

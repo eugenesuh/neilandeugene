@@ -1,89 +1,130 @@
-<!-- Validation failure messages -->
-<% if @guest.present? %>
-  <% if @guest.errors.any? %>
-    <% @guest.errors.full_messages.each do |message| %>
-      <div class="alert alert-danger">
-        <%= message %>
+<div class="page-header header-filter" data-parallax="true" style=" background-image: url('../assets/img/kit/pro/examples/city.jpg'); height: 400px;">
+    <div class = "container">
+    <h2 class = "text-center">ADD A NEW GUEST</h2>
+    <h4 class = "description text-center">Tell us a little bit about your guest. </h4>
       </div>
-    <% end %>
-  <% end %>
-<% end %>
+    </div>
+<div class="main main-raised" style="background-color:#EAEAEA">
+            <div class="profile-content">
+<div class = "container">
 
-<h1>
-  Add a new guest
-</h1>
+<form action="/create_guest" method="post" enctype="multipart/form-data">
+  <h3 class = "p-4"> Your Guest's Information</h3>
 
-<form action="/create_guest" method="post">
-  <!-- Label and input for user_id -->
-  <div class="form-group">
-    <label for="user_id">
-      User
-    </label>
+  <!-- Label and input for image_url -->
 
-    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @guest.try(:user_id) %>">
+  <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+   <div class="fileinput-new thumbnail img-raised">
+	<img src="https://epicattorneymarketing.com/wp-content/uploads/2016/07/Headshot-Placeholder-1.png" alt="image">
+   </div>
+   <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+   <div>
+	<span class="btn btn-raised btn-round btn-default btn-file">
+	   <span class="fileinput-new">Select image</span>
+	   <span class="fileinput-exists">Change</span>
+	   <input type="file" name="image" value="<%= @guest.try(:image) %>" />
+	</span>
+        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+        <i class="fa fa-times"></i> Remove</a>
+   </div>
   </div>
   
-
-  <!-- Label and input for age -->
-  <div class="form-group">
-    <label for="age">
-      Age
-    </label>
-
-    <input type="text" id="age" name="age" class="form-control" value="<%= @guest.try(:age) %>">
-  </div>
-
-  <!-- Label and input for food -->
-  <div class="form-group">
-    <label for="food">
-      Food
-    </label>
-
-    <input type="text" id="food" name="food" class="form-control" value="<%= @guest.try(:food) %>">
-  </div>
-
-  <!-- Label and input for lastname -->
-  <div class="form-group">
-    <label for="lastname">
-      Lastname
-    </label>
-
-    <input type="text" id="lastname" name="lastname" class="form-control" value="<%= @guest.try(:lastname) %>">
-  </div>
-
   <!-- Label and input for firstname -->
   <div class="form-group">
     <label for="firstname">
-      Firstname
+      First Name
     </label>
 
     <input type="text" id="firstname" name="firstname" class="form-control" value="<%= @guest.try(:firstname) %>">
   </div>
 
-  <!-- Label and input for dietary -->
+  <!-- Label and input for lastname -->
+  <div class="form-group">
+    <label for="lastname">
+      Last Name
+    </label>
+
+    <input type="text" id="lastname" name="lastname" class="form-control" value="<%= @guest.try(:lastname) %>">
+  </div>
+  
+  <!-- Label and input for age group -->
+  
+  
+  <div class="form-group">
+    <label for="age">
+      Age Group
+    </label>
+                    <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="age" id="age" value="adult" >
+                                Adult (Drinking Age)
+                                <span class="circle">
+                                    <span class="check bg-dark"></span>
+                                </span>
+                            </label>
+                          </div>
+                        
+                          <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="age" id="age" value="young" checked>
+                                Young Adult (Not of Drinking Age)
+                                <span class="circle">
+                                    <span class="check bg-dark"></span>
+                                </span>
+                            </label>
+                          </div>  
+                          
+                          <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="age" id="age" value="child" checked>
+                                Child (Kid's Menu)
+                                <span class="circle">
+                                    <span class="check bg-dark"></span>
+                                </span>
+                            </label>
+                          </div>  
+  
+                            <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="age" id="age" value="infant" checked>
+                                Infant
+                                <span class="circle">
+                                    <span class="check bg-dark"></span>
+                                </span>
+                            </label>
+                          </div>  
+
+<!-- Label and input for food -->
+  <div class="form-group">
+    <label for="food">
+      Entree & Food Options 
+    </label>
+
+    <input type="text" id="food" name="food" class="form-control" value= "Options will be available after October, 2018">
+  </div>
+
+<!-- Label and input for food -->
   <div class="form-group">
     <label for="dietary">
-      Dietary
+      Dietary Restrictions 
     </label>
 
-    <textarea id="dietary" name="dietary" class="form-control" rows="3"><%= @guest.try(:dietary) %></textarea>
+    <input type="text" id="dietary" name="dietary" class="form-control" value="<%= @guest.try(:dietary) %>">
   </div>
 
-  <!-- Label and input for image -->
-  <div class="form-group">
-    <label for="image">
-      Image
-    </label>
+  <!-- hidden input for user_id -->
 
-    <input type="text" id="image" name="image" class="form-control" value="<%= @guest.try(:image) %>">
-  </div>
+    <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
 
-  <button class="btn btn-block btn-outline-secondary">
-    Create guest
+  <button class="btn btn-block btn-primary">
+    Invite a guest
   </button>
+  <a href="/guests" class = "btn btn-block btn-outline-secondary text-center"> Go Back </a>
 </form>
 
+<hr>
 
-<a href="/guests">
-  Go back
-</a>
+
+</div>
+</div>
+</div>

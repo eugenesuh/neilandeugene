@@ -6,6 +6,15 @@ class GuestsController < ApplicationController
     render("guest_templates/index.html.erb")
   end
 
+  def likes
+    @user = current_user
+    @plikes = Plike.where(:user_id => @user.id)
+    @slikes = Slike.where(:user_id => @user.id)
+    @alikes = Alike.where(:user_id => @user.id)
+
+    render("guest_templates/likes.html.erb")
+  end
+
   def show
     @guest = Guest.find(params.fetch("id_to_display"))
 
@@ -57,7 +66,6 @@ class GuestsController < ApplicationController
 
     @guest.user_id = params.fetch("user_id")
     @guest.age = params.fetch("age")
-    @guest.status = params.fetch("status")
     @guest.food = params.fetch("food")
     @guest.lastname = params.fetch("lastname")
     @guest.firstname = params.fetch("firstname")
@@ -99,7 +107,7 @@ class GuestsController < ApplicationController
     @rsvp.status = params.fetch("status")
     @rsvp.save
 
-      redirect_to("/guests", :notice => "Rsvp updated successfully.")
+      redirect_to("/", :notice => "Rsvp updated successfully.")
     
   end
 end

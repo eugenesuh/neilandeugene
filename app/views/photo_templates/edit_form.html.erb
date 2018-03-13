@@ -1,3 +1,14 @@
+<div class="page-header header-filter" data-parallax="true" style=" background-image: url('<%= @photo.image %>'); height: 400px;">
+    <div class = "container">
+    <h2 class = "text-center">UPDATE YOUR PHOTO</h2>
+    <h4 class = "description text-center">A place to share memories</h4>
+      </div>
+    </div>
+<div class="main main-raised" style="background-color:#EAEAEA">
+            <div class="profile-content">
+<div class = "container">
+
+
 <!-- Validation failure messages -->
 <% if @photo.errors.any? %>
   <% @photo.errors.full_messages.each do |message| %>
@@ -6,10 +17,6 @@
     </div>
   <% end %>
 <% end %>
-
-<h1>
-  Edit photo #<%= @photo.id %>
-</h1>
 
 <hr>
 
@@ -20,25 +27,29 @@
       Caption
     </label>
 
-    <textarea id="caption" name="caption" class="form-control" rows="3"><%= @photo.caption %></textarea>
+    <input type="text" id="caption" name="caption" class="form-control" value="<%= @photo.caption %>">
   </div>
 
-  <!-- Label and input for user_id -->
-  <div class="form-group">
-    <label for="user_id">
-      User
-    </label>
+   <!-- hidden input for user_id -->
 
-    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @photo.user_id %>">
-  </div>
+    <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
 
-  <!-- Label and input for image -->
-  <div class="form-group">
-    <label for="image">
-      Image
-    </label>
+  <!-- Label and input for image_url -->
 
-    <input type="text" id="image" name="image" class="form-control" value="<%= @photo.image %>">
+  <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+   <div class="fileinput-new thumbnail img-raised">
+	<img src="<%= @photo.image %>" alt="image">
+   </div>
+   <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+   <div>
+	<span class="btn btn-raised btn-round btn-default btn-file">
+	   <span class="fileinput-new">Select image</span>
+	   <span class="fileinput-exists">Change</span>
+	   <input type="file" name="image" value="<%= @photo.try(:image) %>" />
+	</span>
+        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+        <i class="fa fa-times"></i> Remove</a>
+   </div>
   </div>
 
   <button class="btn btn-block btn-outline-secondary">
@@ -48,6 +59,7 @@
 
 <hr>
 
-<a href="/photos">
-  Go back
-</a>
+ <a href="/photos" class = "text-muted mb-3 h6 align-center"> Go Back to List of photos </a>
+</div>
+</div>
+</div>

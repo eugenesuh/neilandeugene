@@ -11,4 +11,14 @@
 #
 
 class Photo < ApplicationRecord
+  
+  belongs_to :user
+  
+  has_many :plikes
+  has_many :pcomments
+  
+  mount_uploader :image, ImageUploader
+  
+  validates :user_id, :presence => true
+  
 end

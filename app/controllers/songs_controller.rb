@@ -21,7 +21,6 @@ class SongsController < ApplicationController
     @song.title = params.fetch("title")
     @song.artist = params.fetch("artist")
     @song.user_id = params.fetch("user_id")
-    @song.image = params.fetch("image")
 
 
     if @song.valid?

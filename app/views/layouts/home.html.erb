@@ -1,10 +1,10 @@
 <body class="landing-page" style="background-color:#231F20">
-    <div class="page-header header-filter" data-parallax="true" style=" background-image: url('../assets/img/kit/pro/bg8.jpg'); ">
+    <div class="page-header header-filter" data-parallax="true" style=" background-image: url('../assets/img/us/run_black.JPG'); ">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="title">NEIL + EUGENE's WEDDING</h1>
-                    <h4>Arizona Biltmore</h4>
+                    <h1 class="title">NEIL + EUGENE'S WEDDING</h1>
+                    <a href="http://www.arizonabiltmore.com/gallery/" class = "h4">Arizona Biltmore</a>
                     <h4>Phoenix, AZ</h4>
                     <h4>December 16th, 2018</h4>
                 </div>
@@ -17,15 +17,15 @@
                 <div class="row">
                     <div class="col-md-8 ml-auto mr-auto">
                         <h2 class="title">The Wedding Day</h2>
-                        <h5 class="description">more information to be shared</h5>
+                        <h5 class="description">To be Updated</h5>
                     </div>
                 </div>
                 <div class="features">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="info">
-                                <div class="icon icon-info">
-                                    <i class="material-icons">drink</i>
+                                <div class="icon black">
+                                    <i class="material-icons">audiotrack</i>
                                 </div>
                                 <h4 class="info-title">Rehearsal Dinner</h4>
                                 <p>When: December 15th, 2018</p>
@@ -35,8 +35,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="info">
-                                <div class="icon icon-success">
-                                    <i class="material-icons">heart</i>
+                                <div class="icon icon-rose">
+                                    <i class="material-icons">favorite</i>
                                 </div>
                                 <h4 class="info-title">Ceremony & Reception </h4>
                                 <p>When: December 16th, 2018</p>
@@ -46,8 +46,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="info">
-                                <div class="icon icon-danger">
-                                    <i class="material-icons">dessert</i>
+                                <div class="icon black">
+                                    <i class="material-icons">wb_sunny</i>
                                 </div>
                                 <h4 class="info-title">Brunch</h4>
                                 <p>When: December 17th, 2018</p>
@@ -62,9 +62,9 @@
            
         <div class = "container">
             <div class="card card-nav-tabs text-center">
-                <div class="card-header card-header-warning">
+                <a href="/guests" class="card-header card-header-rose">
                   Your RSVP
-                </div>
+                </a>
                 <div class="card-body">
                   <h4 class="card-title">For Neil and Eugene's Wedding on December 16th, 2018: </h4>
                   
@@ -98,31 +98,25 @@
                   </form>
                   
                   <% else %>
-                  <div class="card card-background" style="background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=750&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D')">
+                  <div class="card card-background" style="background-image: url('../assets/img/us/santafe_jack.JPG')">
                   <div class="card-body">
                     <h6 class="card-category text-info">NEIL + EUGENE's wedding</h6>
                     <a href="#pablo">
                     <% if Rsvp.find_by(user_id: current_user.id).status == "yes" %>
 
-                      <h3 class="card-title">You are coming to our wedding!</h3>
+                      <h3 class="card-title">We're so happy you can join us. It's gonna be good!</h3>
                       </a>
                       <p class="card-description">
-                        We are so excited to see you blah blah blah .........
-                        ...
-                        dfsdf
-                        sdfsdf...
-                        dfsdf
-                        sdfsdf...
-                        dfsdf
-                        sdfsdf...
-                        dfsdf
-                        sdfsdf
+                        
+                        Please share your favorite music, photos, and activities on our website! 
+                        Don't forget to add your guest!
+
                       </p>
                       <% else %>
-                      <h3 class="card-title">Sorry, you are not coming next time</h3>
+                      <h3 class="card-title">We'll be sending you good vibes from Phoenix, AZ </h3>
                       </a>
                       <p class="card-description">
-                       blah blah
+                       
                       </p>
                       <% end %>
                     <a class="btn btn-white btn-link" data-toggle="modal" data-target="#update" >
@@ -147,7 +141,7 @@
                                     <div class="col-md-5">
                                         <div class="card-header card-header-image">
                                             <a href="#pablo">
-                                                <img class="img" src="../assets/img/kit/pro/faces/card-profile1-square.jpg">
+                                                <img class="img" src="../assets/img/us/jiwon.jpeg">
                                             </a>
                                         </div>
                                     </div>
@@ -189,8 +183,7 @@
                                             <h4 class="card-title">AMD</h4>
                                             <h6 class="category text-muted">Bridesmaid</h6>
                                             <p class="card-description">
-                                                Don't be scared of the truth because we need to restart the human foundation in truth...
-                                            </p>
+                                                Fun Fact...                                            </p>
                                         </div>
                                         <div class="card-footer justify-content-center">
                                             <a href="#pablo" class="btn btn-just-icon btn-link btn-linkedin">
@@ -299,29 +292,29 @@
                               </ol>
                               <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                  <img class="d-block w-100" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=468a8c18f5d811cf03c654b653b5089e&auto=format&fit=crop&w=1950&q=80" alt="First slide">
+                                  <img class="d-block w-100" src="../assets/img/us/IMG_0879.JPG" alt="First slide">
                                   <div class="carousel-caption d-none d-md-block">
                                     <h4>
                                         <i class="material-icons">location_on</i>
-                                        Yellowstone National Park, United States
+                                        Horseshoe Bend, AZ, United States
                                     </h4>
                                   </div>
                                 </div>
                                 <div class="carousel-item">
-                                  <img class="d-block w-100" src="https://images.unsplash.com/photo-1455834554206-72ad97671231?ixlib=rb-0.3.5&s=51ed9aa49098af97c34b60d3911ae896&auto=format&fit=crop&w=1950&q=80" alt="Second slide">
+                                  <img class="d-block w-100" src="../assets/img/us/IMG_0880.JPG" alt="Second slide">
                                   <div class="carousel-caption d-none d-md-block">
                                     <h4>
                                         <i class="material-icons">location_on</i>
-                                        Somewhere Beyond, United States
+                                        Page, AZ, United States
                                     </h4>
                                   </div>
                                 </div>
                                 <div class="carousel-item">
-                                  <img class="d-block w-100" src="https://images.unsplash.com/photo-1446329813274-7c9036bd9a1f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=af9c4cfbc245991849b8cacabacd34ff&auto=format&fit=crop&w=1950&q=80" alt="Third slide">
+                                  <img class="d-block w-100" src="../assets/img/us/IMG_0881.JPG" alt="Third slide">
                                   <div class="carousel-caption d-none d-md-block">
                                     <h4>
                                         <i class="material-icons">location_on</i>
-                                        Yellowstone National Park, United States
+                                        Horseshoe Bend, AZ, United States
                                     </h4>
                                   </div>
                                 </div>
@@ -341,42 +334,7 @@
                     </div>
                 </div>
             </div>  <!--End Carousel-->
-        
-            <div class="section section-contacts">
-                <div class="row">
-                    <div class="col-md-8 ml-auto mr-auto">
-                        <h2 class="text-center title">Send us a note!</h2>
-                        <h4 class="text-center description">We would love to have you blah blah, send us any questions or concerns </h4>
-                        <form class="contact-form">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="bmd-label-floating">Your Name</label>
-                                        <input type="email" class="form-control" value = "<%= current_user.username %>">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="bmd-label-floating">Your Email</label>
-                                        <input type="email" class="form-control" value = "<%= current_user.email %>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleMessage" class="bmd-label-floating">Your Messasge</label>
-                                <textarea type="email" class="form-control" rows="4" id="exampleMessage"></textarea>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4 ml-auto mr-auto text-center">
-                                    <button class="btn btn-primary btn-raised">
-                                        Send Message
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
     <footer class="footer ">
