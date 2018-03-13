@@ -46,8 +46,7 @@
       <% pcomments = photo.pcomments.last(4) %>
       <% pcomments.each do |pcomment| %>
       <ul class="p-0 m-0">
-        <p class = "h6"><%= pcomment.user.username %>:</p> <%= pcomment.body %>
-        <a href="/delete_pcomment/<%= pcomment.id %>" class = "pull-right"> Delete </a>
+        <p><span class="h6"><%= pcomment.user.username %>:</span> <%= pcomment.body %> <a href="/delete_pcomment/<%= pcomment.id %>" class = "pull-right"> Delete </a></p>
       </ul>
       <% end %>
        <form action="/create_pcomment" method="post">
@@ -55,7 +54,7 @@
                   <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
                   <!-- Label and input for body -->
-                  <div class="form-group">
+                  <div class="form-group" style="padding-top: 0px;">
                     <label for="body" class="sr-only">
                       Body
                     </label>
