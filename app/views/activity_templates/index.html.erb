@@ -50,8 +50,7 @@
       <% acomments = activity.acomments.last(4) %>
       <% acomments.each do |acomment| %>
       <ul class="p-0 m-0">
-      <p class = "h6"><%= acomment.user.username %>:</p> <%= acomment.body %>
-        <a href="/delete_acomment/<%= acomment.id %>" class = "pull-right"> Delete </a>
+      <p><span class="h6"><%= acomment.user.username %>:</span> <%= acomment.body %> <a href="/delete_acomment/<%= acomment.id %>" class = "pull-right"> Delete </a></p>
       </ul>
       <% end %>
    <form action="/create_acomment" method="post">

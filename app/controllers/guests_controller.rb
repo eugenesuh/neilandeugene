@@ -54,6 +54,13 @@ class GuestsController < ApplicationController
 
     render("layouts/home.html.erb")
   end
+  
+  def family
+    @users = User.all
+    @rsvps = Rsvp.all
+
+    render("layouts/family.html.erb")
+  end
 
   def edit_form
     @guest = Guest.find(params.fetch("prefill_with_id"))
@@ -96,7 +103,7 @@ class GuestsController < ApplicationController
     @rsvp.status = params.fetch("status")
     @rsvp.save
 
-    redirect_to("/", :notice => "Rsvp created successfully.")
+    redirect_to("/guests", :notice => "Rsvp created successfully.")
   end
 
 
@@ -107,7 +114,7 @@ class GuestsController < ApplicationController
     @rsvp.status = params.fetch("status")
     @rsvp.save
 
-      redirect_to("/", :notice => "Rsvp updated successfully.")
+      redirect_to("/guests", :notice => "Rsvp updated successfully.")
     
   end
 end

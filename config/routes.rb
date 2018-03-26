@@ -132,6 +132,8 @@ Rails.application.routes.draw do
   # Routes for the Guest resource:
   
   root "guests#home"
+  get("/family", { :controller => "guests", :action => "family" })
+
   
   # CREATE
   get("/guests/new", { :controller => "guests", :action => "new_form" })
