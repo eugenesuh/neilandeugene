@@ -26,3 +26,6 @@
 examples.txt
 grades.yml
 whitelist.yml
+
+# Ignore application configuration
+/config/application.yml
