@@ -48,9 +48,8 @@ class GuestsController < ApplicationController
   def home
     @users = User.all
     @rsvps = Rsvp.all
+    @myrsvp = Rsvp.where(:status => "Yes")
     @guests = Guest.all
-    
-    @rsvp = @rsvps.find_by(user_id: current_user.id)
 
     render("layouts/home.html.erb")
   end

@@ -17,7 +17,8 @@
 class Guest < ApplicationRecord
   
   belongs_to :user
-  
+  has_one :rsvps
+
   mount_uploader :image, ImageUploader
   
   validates :user_id, :presence => true

@@ -41,8 +41,7 @@ class User < ApplicationRecord
   has_many :activities
   has_many :acomments
   has_many :alikes
-  
-  has_many :rsvps
+  belongs_to :rsvp
 
   validates :username, :presence => true, :uniqueness => true
   
