@@ -7,18 +7,28 @@
         <div class="main main-raised" style="background-color:#EAEAEA">
             <div class="profile-content">
                 <div class="container">
-                  <div class = "row">
+                    <div class = "row">
+                    <h3 class = "title"> Travel Information </h3>
+                    </div>
+                    <div class = "row">
+                      <h5> Accomodation & Transportation Information To be Updated </h5>
+                      </div>
+                                    
+              <div class = "row">
+                <h3 class = "title"> Share your experience near Phoenix, AZ </h3>
+                </div>
+                <div class = "row">
                 <a href="/activities/new" class="btn btn-primary btn-round text-center mt-3">
                 <i class="material-icons">favorite</i> Add New Activity   
                  </a>
-            </div>
+              </div>
   
 <div class = "container">
 <div class = "row">
 <% @activities.each do |activity| %>
-<div class = "col-4">
+<div class = "col-6">
   <div class="card">
-  <img class="card-img-top" src="<%= activity.image %>" alt="Music!">
+  <img class="card-img-top" src="<%= activity.image %>">
   <div class="card-body">
     <h4 class="card-title"><%= activity.name %>
     
