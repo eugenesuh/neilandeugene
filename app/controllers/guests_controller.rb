@@ -49,14 +49,6 @@ class GuestsController < ApplicationController
     @users = User.all
     @rsvps = Rsvp.all
     @guests = Guest.all
-    #@myrsvps = Rsvp.where(:status => "Yes")
-    #@myusers = Users.where(user_id => [@myrsvps.user_id])
-    #@guests = Guest.where(user_id => [@myusers.user_id])
-    #myusers = User.joins(:rsvp)
-    #@guests = 
-    ##Guest.joins(“INNER JOIN rsvps ON guests.user_id = myusers.user_id”)
-    #Guest.joins(LEFT JOIN myusers ON guests.user_id = myusers.id)
-
 
     render("layouts/home.html.erb")
   end

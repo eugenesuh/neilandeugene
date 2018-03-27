@@ -12,7 +12,6 @@
 class Rsvp < ApplicationRecord
   
   belongs_to :user
-  has_many :guests, :foreign_key => "user_id"
 
 
   validates :user_id, :presence => true

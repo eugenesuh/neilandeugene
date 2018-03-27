@@ -17,7 +17,6 @@
 class Guest < ApplicationRecord
   
   belongs_to :user
-  has_one :rsvp
 
   mount_uploader :image, ImageUploader
   
