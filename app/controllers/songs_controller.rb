@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
   def index
-    @songs = Song.all
+    @songs = Song.order(updated_at: :desc)
 
     render("song_templates/index.html.erb")
   end

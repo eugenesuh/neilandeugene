@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   def index
-    @activities = Activity.all
+    @activities = Activity.order(updated_at: :desc)
 
     render("activity_templates/index.html.erb")
   end
