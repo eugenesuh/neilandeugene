@@ -20,6 +20,10 @@
 
 <hr>
 
+   <div class="fileinput-exists thumbnail img-raised">
+	<img src="<%= @photo.image %>">
+   </div>
+   
 <form action="/update_photo/<%= @photo.id %>" method="post">
   <!-- Label and input for caption -->
   <div class="form-group">
@@ -33,23 +37,6 @@
    <!-- hidden input for user_id -->
 
     <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
-
-  <!-- Label and input for image_url -->
-
-  <div class="fileinput fileinput-exists text-center" data-provides="fileinput">
-   <div class="fileinput-exists thumbnail img-raised">
-	<img src="<%= @photo.image %>">
-   </div>
-   <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
-   <div>
-	<span class="btn btn-raised btn-round btn-default btn-file">
-	   <span class="fileinput-exists">Change</span>
-	   <input type="file" name="image"/>
-	</span>
-        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
-        <i class="fa fa-times"></i> Remove</a>
-   </div>
-  </div>
 
   <button class="btn btn-block btn-outline-secondary">
     Update photo

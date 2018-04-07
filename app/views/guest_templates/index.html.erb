@@ -53,40 +53,34 @@
                         </a>
                         
           <% else %>
-          <h3 class="description mt-4 text-rose font-weight-bold">You are coming! Party On!</h3>
-
-           <a class="btn btn-dark btn-link" data-toggle="modal" data-target="#update" >
+                     <div class = "m-4">
+                     <a class="btn btn-dark btn-link" data-toggle="modal" data-target="#update" >
                         <i class="material-icons">subject</i> Edit My RSVP Status 
-                        </a>
-           <h5 class="description mt-4 text-dark font-weight-bold">NEXT STEP: Create Your Profile</h5>
-          <h5 class="description mt-4 text-dark">Add guests, add a photo, share dietary restrictions, and entree choices for our ceremony & reception. </h5>
-
-          <h2 class="section-title">Your RSVP Details</h2>
-          <a href="/guests/new" class="btn btn-primary btn-round text-center mt-3">
-                <i class="material-icons">favorite</i> Add New Guest    
+                        </a> </div>
+          
+          <h3 class="description text-rose font-weight-bold">You are coming! Party On!</h3>
+           <h5 class="description mt-4 mb-0 text-dark font-weight-bold">Manage Your Information Below:</h5>
+          <h5 class="description mt-0 text-dark">Add guests, share dietary restrictions, and choose an entree </h5>
+          <a href="/guests/new" class="btn btn-rose btn-round text-center mt-3 mb-0">
+                <i class="material-icons">favorite</i> Add Guest(s)  
                  </a>
           <div class = "container m-0 p-0">
             <div class = "row">
             <% @myguests.each do |guest| %>
                 <div class="col-6">
                     <div class="card card-blog">
-                        <div class="card-header card-header-image">
-                            <a href="#pablo">
-                                <img src="<%=guest.image %>" alt="../assets/img/kit/pro/dg6.jpg">
-                            </a>
-                        </div>
                         <div class="card-body">
-                            <h6 class="card-category text-rose">Reservation Details</h6>
-                            <h4 class="card-title">
+                           <h6 class="card-category text-rose">RSVP Detail</h6>
+                            <h2 class="card-title text-uppercase">
                               <%= guest.firstname %> <%= guest.lastname %>
-                            </h4>
+                            </h2>
                             <p>
                           <ul class="text-left" style="display:inline-block;vertical-align:middle";>
-                            <li> <p class="h6 m-0">Age Group:</p> <%= guest.age %> </li>
-                            <li><p class="h6 m-0">Dietary Restriction:</p>  <%= guest.dietary %> </li>
-                            <li><p class="h6 m-0">Entree Option:</p>  <%= guest.food %> </li>
+                            <li> <p class="h6 m-0 text-rose">Age Group:</p> <%= guest.age %> </li>
+                            <li><p class="h6 m-0 text-rose">Dietary Restriction:</p>  <%= guest.dietary %> </li>
+                            <li><p class="h6 m-0 text-rose">Entree Option:</p>  <%= guest.food %> </li>
                           </ul>
-                          <p class="card-description">Edit or delete your guest</p>
+                          <p class="card-description">Edit or delete this RSVP</p>
                           <div class="footer text-center">
                               <a href="/guests/<%= guest.id %>/edit" class="btn btn-dark btn-just-icon btn-fill btn-round btn-wd">
                                   <i class="material-icons">mode_edit</i>

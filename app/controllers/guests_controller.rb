@@ -34,8 +34,7 @@ class GuestsController < ApplicationController
     @guest.lastname = params.fetch("lastname")
     @guest.firstname = params.fetch("firstname")
     @guest.dietary = params.fetch("dietary")
-    @guest.image = params.fetch("image")
-
+    
     if @guest.valid?
       @guest.save
 
@@ -75,7 +74,6 @@ class GuestsController < ApplicationController
     @guest.lastname = params.fetch("lastname")
     @guest.firstname = params.fetch("firstname")
     @guest.dietary = params.fetch("dietary")
-    @guest.image = params.fetch("image")
 
     if @guest.valid?
       @guest.save
