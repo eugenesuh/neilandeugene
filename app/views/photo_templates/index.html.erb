@@ -23,7 +23,7 @@
     <img src="<%= photo.image %>" style="width:100%">
   </div>
   <div class="card-body">
-      <h6 class = "pull-left"> <%= photo.caption %></h6>
+      <h6 class = "pull-left text-dark"> <%= photo.caption %></h6>
       <% id = current_user.id %>
       <% if photo.plikes.find_by(user_id: id) != nil %>
       <a href="/delete_plike/<%= photo.plikes.find_by(user_id: id).id %>" class="btn btn-link pull-right p-0">
