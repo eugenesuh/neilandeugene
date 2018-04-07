@@ -80,7 +80,7 @@ class GuestsController < ApplicationController
     if @guest.valid?
       @guest.save
 
-      redirect_to("/guests/#{@guest.id}", :notice => "Guest updated successfully.")
+      redirect_to("/guests", :notice => "Guest updated successfully.")
     else
       render("guest_templates/edit_form.html.erb")
     end

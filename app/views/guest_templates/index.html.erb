@@ -45,19 +45,21 @@
                     </div>
                   </form>
     
-          <% elsif Rsvp.find_by(user_id: current_user.id).status == "no" %>
-                        <h5 class="description mt-4">I am sorry you can't make it. Let's catch up next time!</h5>
+          <% elsif Rsvp.find_by(user_id: current_user.id).status == "No" %>
+                        <h5 class="description mt-4 text-dark font-weight-bold">We're sorry you can't make it. Let's catch up next time!</h5>
                         
                         <a class="btn btn-dark btn-link" data-toggle="modal" data-target="#update" >
                         <i class="material-icons">subject</i> Edit My RSVP Status 
                         </a>
                         
           <% else %>
-          <h5 class="description mt-4">You are coming! Party On!</h5>
-           
+          <h3 class="description mt-4 text-rose font-weight-bold">You are coming! Party On!</h3>
+
            <a class="btn btn-dark btn-link" data-toggle="modal" data-target="#update" >
                         <i class="material-icons">subject</i> Edit My RSVP Status 
                         </a>
+           <h5 class="description mt-4 text-dark font-weight-bold">NEXT STEP: Create Your Profile</h5>
+          <h5 class="description mt-4 text-dark">Add guests, add a photo, share dietary restrictions, and entree choices for our ceremony & reception. </h5>
 
           <h2 class="section-title">Your RSVP Details</h2>
           <a href="/guests/new" class="btn btn-primary btn-round text-center mt-3">
