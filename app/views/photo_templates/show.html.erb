@@ -5,40 +5,40 @@
       </div>
 </div>
 <div class="main main-raised" style="background-color:#EAEAEA">
-<div class = "profile-content">
-  <div class = "container">
+<div class = "profile-content mb-4">
+  <div class = "container mx-1 mb-4">
     <a href="/photos/<%= @photo.id %>/edit" class="btn btn-primary btn-round text-center mt-3"><i class="material-icons">mode_edit</i> Edit photo</a>
   </div>
-  <div class = "container mt-3">
+  <div class = "container mt-3 mx-1">
     <div class = "row">
-      <div class = "col-6">
-<dl>
-  <dt>
-    <img class="d-block w-100" src="<%= @photo.image %>">
-  </dt>
+      <div class = "col-9">
+        <dl>
+          <dt>
+            <img class="d-block w-100" src="<%= @photo.image %>">
+          </dt>
+          
+        </dl>
+        
+        <dl>
+          <dd>
+            <%= @photo.caption %>
+          </dd>
+        
+        </dl>
+        </div>
+
+<div class = "col-3">
   
-</dl>
-
-<dl>
-  <dd>
-    <%= @photo.caption %>
-  </dd>
-
-</dl>
-</div>
-
-<div class = "col-6">
-  
-  <p class="card-text">
-    <h5 class = "caption">Comment Log</h5>
+    <p class="card-text">
+    <h5 class = "font-weight-bold">Please share your comments:</h5>
       <% pcomments = @photo.pcomments %>
       <% pcomments.each do |pcomment| %>
       <ul class="p-0 m-0">
-        <%= pcomment.body %>
-        <a href="/delete_pcomment/<%= pcomment.id %>" class = "pull-right"> Delete </a>
+      <p><span class="h6"><%= pcomment.user.username %>:</span> <%= pcomment.body %> <a href="/delete_pcomment/<%= pcomment.id %>" class = "pull-right"> Delete </a></p>
       </ul>
       <% end %>
-   <form action="/create_pcomment" method="post">
+    
+    <form action="/create_pcomment" method="post">
                   <input type="hidden" name="photo_id" value="<%= @photo.id %>">
                   <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
@@ -51,6 +51,7 @@
                     <div class="input-group">
                       <input type="text" id="body" name="body" class="form-control" placeholder="Add a comment..." required>
                     </div> <!-- input-group -->
+
                     <div>
                       <span class="input-group-btn">
                         <button class="btn btn-warning" type="submit">
@@ -58,12 +59,26 @@
                           Add Comment
                         </button>
                       </span>
-                      </p>
+                      <% if current_user.id == @photo.user_id %>
+                    <a href="/photos/<%= @photo.id %>/edit" class="btn btn-dark btn-just-icon btn-fill btn-round btn-wd pull-right">
+                        <i class="material-icons">mode_edit</i>
+                    </a>
+                    <a href="/delete_photo/<%= @photo.id %>" class="btn btn-danger btn-just-icon btn-fill btn-round pull-right">
+                        <i class="material-icons">delete</i>
+                    </a>
+                  <% else %>
+                  <% end %>   
+                    </div>
+                  </div>  <!-- form-group -->
+                </form>
+             </p>
   
 </div>
 </div>
+  <a href="/photos" class = "text-muted h6 align-center"> Go Back to List of photos </a>
 
 </div>
-  <a href="/photos" class = "text-muted mb-3 h6 align-center"> Go Back to List of photos </a>
+</div>
+</div>
 </div>
 </div>

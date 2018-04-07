@@ -69,14 +69,11 @@
                           Add Comment
                         </button>
                       </span>
-                    <a href="/songs/<%= song.id %>" class=" h6 text-muted pull-right">
-                        Show Details
-                    </a>
                     <% if current_user.id == song.user_id %>
-                    <a href="/songs/<%= song.id %>/edit" class="btn btn-dark btn-just-icon btn-fill btn-round btn-wd">
+                    <a href="/songs/<%= song.id %>/edit" class="btn btn-dark btn-just-icon btn-fill btn-round btn-wd pull-right">
                         <i class="material-icons">mode_edit</i>
                     </a>
-                    <a href="/delete_song/<%= song.id %>" class="btn btn-danger btn-just-icon btn-fill btn-round">
+                    <a href="/delete_song/<%= song.id %>" class="btn btn-danger btn-just-icon btn-fill btn-round pull-right">
                         <i class="material-icons">delete</i>
                     </a>
                   <% else %>

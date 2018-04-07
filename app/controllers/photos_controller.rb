@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
   def index
     @photos = Photo.order(updated_at: :desc)
-
+    
     render("photo_templates/index.html.erb")
   end
 

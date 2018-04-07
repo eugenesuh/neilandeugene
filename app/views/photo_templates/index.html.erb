@@ -1,4 +1,4 @@
-  <div class="page-header header-filter" data-parallax="true" style=" background-image: url(../assets/img/us/cute.jpeg); height: 500px;">
+<div class="page-header header-filter" data-parallax="true" style=" background-image: url(../assets/img/us/cute.jpeg); height: 500px;">
     <div class = "container">
     <h2 class = "text-center">SHARE YOUR PHOTOS</h2>
     <h4 class = "description text-center">A place to share memories! Feel free to introduce yourself with your photos! </h4>
@@ -13,20 +13,19 @@
                  </a>
             </div>
   
-<div class = "container">
+<div class = "container-fluid">
 <div class = "row">
 <% @photos.each do |photo| %>
 <div class = "col-md-4">
   <div class="card card-product card-plain">
-  <div class="card-header card-header-image">
-  <img src="<%= photo.image %>" alt="https://static.pexels.com/photos/132037/pexels-photo-132037.jpeg">
+  <a href="/photos/<%= photo.id %>">
+    <div class="card-header card-header-image">
+    <img src="<%= photo.image %>" style="width:100%">
   </div>
   <div class="card-body">
-      <p class = "card-description pull-left"> <%= photo.caption %></p>
+      <h6 class = "pull-left"> <%= photo.caption %></h6>
       <% id = current_user.id %>
-    
       <% if photo.plikes.find_by(user_id: id) != nil %>
-                
       <a href="/delete_plike/<%= photo.plikes.find_by(user_id: id).id %>" class="btn btn-link pull-right p-0">
                   <i class="fa fa-fw fa-heart"></i> <%= photo.plikes.count %>
                 </a>
@@ -42,52 +41,11 @@
                 </form>
       <% end %>
    </div>
-  <p class="card-description pull-left text-muted">
-      <% pcomments = photo.pcomments.last(4) %>
-      <% pcomments.each do |pcomment| %>
-      <ul class="p-0 m-0">
-        <p><span class="h6"><%= pcomment.user.username %>:</span> <%= pcomment.body %> <a href="/delete_pcomment/<%= pcomment.id %>" class = "pull-right"> Delete </a></p>
-      </ul>
-      <% end %>
-       <form action="/create_pcomment" method="post">
-                  <input type="hidden" name="photo_id" value="<%= photo.id %>">
-                  <input type="hidden" name="user_id" value="<%= current_user.id %>">
-
-                  <!-- Label and input for body -->
-                  <div class="form-group" style="padding-top: 0px;">
-                    <label for="body" class="sr-only">
-                      Body
-                    </label>
-
-                    <div class="input-group">
-                      <input type="text" id="body" name="body" class="form-control" placeholder="Add a comment..." required>
-                    </div> <!-- input-group -->
-                    <div>
-                      <span class="input-group-btn">
-                        <button class="btn btn-warning" type="submit">
-                          <i class="fa fa-fw fa-commenting-o"></i>
-                          Add Comment
-                        </button>
-                      </span>
-                    <a href="/photos/<%= photo.id %>" class=" h6 text-muted pull-right">
-                        Show Details
-                    </a>
-                    </div>
-                    <% if current_user.id == photo.user_id %>
-                    <a href="/photos/<%= photo.id %>/edit" class="btn btn-dark btn-just-icon btn-fill btn-round btn-wd">
-                        <i class="material-icons">mode_edit</i>
-                    </a>
-                    <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger btn-just-icon btn-fill btn-round">
-                        <i class="material-icons">delete</i>
-                    </a>
-                  <% else %>
-                  <% end %>
-                  </div>  <!-- form-group -->
-                </form>
-  </p>
   </div>
   </div>
 <% end %>
+</div>
+</div>
 </div>
 </div>
 </div>
