@@ -34,7 +34,7 @@
                           
                                 <p class = "text-dark font-weight-bold">December 15th, 2018</p>
                                 <p class = "text-dark font-weight-bold">  TBD </p>
-                                <p class = "text-dark font-weight-bold">Wedding Party Only</p>
+                                <p class = "text-dark font-weight-bold">Wedding Party + Family</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -71,6 +71,7 @@
                 </a>
                 <div class="card-body">
                   <h4 class="card-title">For Neil and Eugene's Wedding on December 16th, 2018: </h4>
+                  <h6 class = "text-rose">Children and Babies Are Most Welcome!</h4>
                   
                   <% if Rsvp.find_by(user_id: current_user.id) == nil %>
                   <form action="/create_rsvp" method="post">
